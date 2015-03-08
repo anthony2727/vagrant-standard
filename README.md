@@ -32,9 +32,11 @@ With Vagrant, your development environment is just an "UP" away!
   mkdir my_project_name
   cd my_project_name
 ```
-2- clone the *vagrant-standard* repository. It contains the vagrantfile and the software provisioning files
+2- Clone the *vagrant-standard* repository. It contains the vagrantfile and the software provisioning files
 ```shell
-  clone https://github.com/anthony2727/vagrant-standard.git
+  git init
+  git clone https://github.com/anthony2727/vagrant-standard.git
+  cd vagrant-standard
 ```
 3- Run it!
 ```shell
