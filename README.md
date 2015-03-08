@@ -42,10 +42,18 @@ With Vagrant, your development environment is just an "UP" away!
 ```shell
   vagrant up
 ```
+*You will be prompted to enter the interface that will be used for accesing the machine*
 
 **You are SET TO GO!**
 Get into your new deployed virtual machine
 > vagrant ssh
+OR 
+
+*Add the following host configuration to your machine*
+-- Mac 
+> add: **[your_host_name] 192.168.33.10** in the **/etc/hosts** file. Change [your_host_name] for something like: test.app
+
+*Open your browser and hit **test.app** * 
 
 
 
