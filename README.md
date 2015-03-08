@@ -32,7 +32,7 @@ With Vagrant, your development environment is just an "UP" away!
   mkdir my_project_name
   cd my_project_name
 ```
-2- clone the *vagrantfile* configuration file 
+2- clone the *vagrant-standard* repository. It contains the vagrantfiles and the software provisioning files
 ```shell
   clone https://github.com/anthony2727/vagrant-standard.git
 ```
