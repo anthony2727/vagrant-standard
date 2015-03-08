@@ -43,13 +43,13 @@ Vagrant.configure(2) do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  # config.vm.provider "virtualbox" do |vb|
+  #config.vm.provider "virtualbox" do |vb|
   #   # Display the VirtualBox GUI when booting the machine
-  #   vb.gui = true
+  #    vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
-  #   vb.memory = "1024"
-  # end
+  #    vb.memory = "1024"
+  #end
   #
   # View the documentation for the provider you are using for more
   # information on available options.
@@ -64,31 +64,52 @@ Vagrant.configure(2) do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  config.vm.provision "shell", inline: <<-SHELL
-     sudo apt-get update
-     sudo apt-get install -y apache2
-     echo "--Enabling mod-rewrite--"
-     sudo a2enmod rewrite
-     echo "--Install nodejs--"
-     sudo apt-get install -y nodejs
-     echo "--Installing npm"
-     sudo apt-get install -y npm
-     echo "--Installing Yeoman--"
-     sudo npm install -g yo
-     echo "--Installing php5--"
-     sudo apt-get install -y php5
-     echo "--Installing php5-mcrypt"
-     sudo apt-get install -y php5-mcrypt
-     echo "--Installling fpm"
-     sudo apt-get install -y php5-fpm
-     echo "--Installing composer--"
-     curl -sS https://getcomposer.org/installer | php
-     sudo mv composer.phar /usr/local/bin/composer
-     echo "--Enabling Error reporting and Displaying errors--"
-     sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php5/apache2/php.ini
-     sed -i "s/display_errors = .*/display_errors = On/" /etc/php5/apache2/php.ini
-     sed -i "s/AllowOverride None/AllowOverride All/" /etc/apache2/apache2.conf
-     sudo service apache2 restart
-     echo "All set to GO! - Provisioning by: Anthony Rodriguez"
-    SHELL
+  
+  #Apache2 configuration
+  config.vm.provision "shell" do |s|
+    s.path = "provisioners/apache2.sh"
+  end
+
+  config.vm.provision "shell" do |s|
+    s.path = "provisioners/php5.sh"
+  end
+
+  config.vm.provision "shell" do |s|
+    s.path = "provisioners/composer.sh"
+  end
+
+  config.vm.provision "shell" do |s|
+    s.path = "provisioners/nodejs.sh"
+  end
+
+  config.vm.provision "shell" do |s|
+    s.path = "provisioners/npm.sh"
+  end
+
+  config.vm.provision "shell" do |s|
+    s.path = "provisioners/git.sh"
+  end
+
+  config.vm.provision "shell" do |s|
+    s.path = "provisioners/bower.sh"
+  end
+
+  config.vm.provision "shell" do |s|
+    s.path = "provisioners/gulp.sh"
+  end
+
+  config.vm.provision "shell" do |s|
+    s.path = "provisioners/grunt-cli.sh"
+  end
+
+  config.vm.provision "shell" do |s|
+    s.path = "provisioners/yo.sh"
+  end
+    
 end
+
+
+
+
+
+
